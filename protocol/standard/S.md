@@ -338,6 +338,34 @@ header 中有三个必填参数，键名统一用小写；
              404：该回复已存在
              500：添加失败
 
+###12、分享接口
+
+	通过producd_id获取到要分享的内容
+
+    url        : share
+    methord    : get
+    argument   : product_id
+    example    : /api/share/product_id
+
+    return
+    if sucess  : {
+                     "result": {
+                         "share_title": "神奇的净化器",
+                         "share_url": "http:\\/\\/abc.com",
+                         "share_img": "http:\\/\\/yun.app\\/download\\/image\\/5f0bda0f82081c0743c1a6b25a0f3bad.gif",
+                         "share_text": "事实上"
+                     },
+                     "message": 200
+                 }
+
+    if fail    : {
+                     "message": 500
+                 }
+
+    message: 200：获取成功
+			 400：参数错误
+             500：获取失败
+
 ##设备管理
 
 ###1、查询设备
