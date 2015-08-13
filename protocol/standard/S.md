@@ -832,3 +832,30 @@ header 中有三个必填参数，键名统一用小写；
                 
     message: 400:参数错误
              404:查询无结果
+
+
+### 固件升级接口
+
+根据 token 获取该用户绑定的设备中需要升级的设备以及固件地址
+
+    url        : appHost
+    methord    : get
+    argument   : (需要token)
+
+    example    : /api/newversion
+
+    return
+    if success : {
+                    “result”： [{
+					     "id": "100387",
+					     "url": "http:\\/\\/yun.skyware.com.cn\\/download\\/firmware\\/LPBS2W_v1.0.9.bin"
+				     }],
+		             "message": 200
+		         }
+
+    if fail    : {
+                     "message": 404
+                 }
+
+    message: 200:获取成功
+             500:该用户没有需要更新的设备
