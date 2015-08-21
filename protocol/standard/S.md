@@ -295,7 +295,8 @@ header 中有三个必填参数，键名统一用小写；
     argument   : (需要token)
 	        	 title
 				 content
-				 product_id
+				 app_id
+				 app_version
 				 category		类型（int）
     example    : /api/feedback
 
@@ -838,7 +839,7 @@ header 中有三个必填参数，键名统一用小写；
 
 根据 token 获取该用户绑定的设备中需要升级的设备以及固件地址
 
-    url        : appHost
+    url        : newversion
     methord    : get
     argument   : (需要token)
 
@@ -846,16 +847,18 @@ header 中有三个必填参数，键名统一用小写；
 
     return
     if success : {
-                    “result”： [{
-					     "id": "100387",
-					     "url": "http:\\/\\/yun.skyware.com.cn\\/download\\/firmware\\/LPBS2W_v1.0.9.bin"
-				     }],
-		             "message": 200
-		         }
+				     "result": [{
+					     "device_id": "100387",
+					     "firmware_version": "v1.0.9",
+					     "firmware_update_intro": "增加 0x07 协议，以及补充了0x05 协议",
+					     "firmware_url": "http:\\/\\/yun.skyware.com.cn\\/download\\/firmware\\/LPBS2W_v1.0.9.bin"
+					 }],
+				     "message": 200
+				 }
 
     if fail    : {
                      "message": 404
                  }
 
     message: 200:获取成功
-             500:该用户没有需要更新的设备
+             404:该用户没有需要更新的设备
